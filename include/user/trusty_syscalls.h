@@ -47,6 +47,7 @@
 #define __NR_read_msg		0x21
 #define __NR_put_msg		0x22
 #define __NR_send_msg		0x23
+#define __NR_virt_to_phys		0x24
 
 #ifndef ASSEMBLY
 
@@ -76,6 +77,7 @@ long get_msg (uint32_t handle, ipc_msg_info_t *msg_info);
 long read_msg (uint32_t handle, uint32_t msg_id, uint32_t offset, ipc_msg_t *msg);
 long put_msg (uint32_t handle, uint32_t msg_id);
 long send_msg (uint32_t handle, ipc_msg_t *msg);
+paddr_t virt_to_phys(void *ptr);
 
 __END_CDECLS
 

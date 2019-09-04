@@ -409,3 +409,19 @@ FUNCTION(send_msg)
     popq %rbp
     popfq
     ret
+
+FUNCTION(virt_to_phys)
+	pushfq
+	pushq %rbp
+	pushq %rbx
+	pushq %r15
+	movq $__NR_virt_to_phys, %rax
+	/* Return Addr and stack*/
+	leaq 1f(%rip), %rbx
+	movq %rsp, %rbp
+	sysenter
+1:	popq %r15
+	popq %rbx
+	popq %rbp
+	popfq
+	ret
